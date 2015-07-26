@@ -12,13 +12,6 @@ var capsConfig = {
     'os' : 'OS X',
     'os_version' : 'Yosemite',
     'resolution' : '1024x768'
-  },
-  'ie11': {
-    'browser' : 'IE',
-    'browser_version' : '11.0',
-    'os' : 'Windows',
-    'os_version' : '7',
-    'resolution' : '1024x768'
   }
 }
 
@@ -46,38 +39,42 @@ describe('Visual monitor testing', function() {
   it('should show the home page',function(done) {
     client
       .url(baseUrl)
+      .pause(3000)
+      .click('#_ZAhelloBar #_ZAhelloBarRightImg')
       .webdrivercss(testName + '.homepage', {
         name: 'homepage',
         exclude:
           [
-            // News block.
-            '#tab-news',
-            // Community stats.
-            '#community-stats .highlight',
-            // Who uses Drupal.
-            '#sites-with-drupal img'
+            // Top banner right.
+            '.BannerRight',
+            // Top banner left.
+            '.BannerLeft',
+            // News
+            '.NewsBody',
+            // Business list
+            '.BusinessList .bBody',
+            // Products.
+            '#divProducts img',
+            // Menu item Ad
+            '.MenuItemAdv',
           ],
         remove:
           [
-            // Who uses Drupal text
-            '#sites-with-drupal p a'
+            // Plusone.
+            '#___plusone_0',
+            // Facebook likes.
+            '.fbLike',
+            // Popular
+            '.PopSearch',
+            // Articles.
+            '.Articles .Head',
+            '.Articles .Body',
+            // Products text.
+            '#divProducts span',
+            // Feedback.
+            '.opinion_image'
           ],
-        screenWidth: selectedCaps == 'chrome' ? [320, 640, 960, 1200] : undefined,
-      }, shoovWebdrivercss.processResults)
-      .call(done);
-  });
-
-  it('should show start page',function(done) {
-    client
-      .url(baseUrl + '/start')
-      .webdrivercss(testName + '.start', {
-        name: 'start',
-        exclude:
-          [
-            '.narrow-box ul.flat',
-            '.get-started.documentation img'
-          ],
-        screenWidth: selectedCaps == 'chrome' ? [320, 640, 960, 1200] : undefined,
+        screenWidth: selectedCaps == 'chrome' ? [960, 1200] : undefined
       }, shoovWebdrivercss.processResults)
       .call(done);
   });
