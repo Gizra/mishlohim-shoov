@@ -12,6 +12,13 @@ var capsConfig = {
     'os' : 'OS X',
     'os_version' : 'Yosemite',
     'resolution' : '1024x768'
+  },
+  'ie11': {
+    'browser' : 'IE',
+    'browser_version' : '11.0',
+    'os' : 'Windows',
+    'os_version' : '7',
+    'resolution' : '1024x768'
   }
 }
 
@@ -39,6 +46,7 @@ describe('Visual monitor testing', function() {
   it('should show the home page',function(done) {
     client
       .url(baseUrl)
+      // Wait for Exclusive benefits top message.
       .pause(3000)
       .click('#_ZAhelloBar #_ZAhelloBarRightImg')
       .webdrivercss(testName + '.homepage', {
