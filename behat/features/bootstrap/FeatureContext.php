@@ -39,11 +39,11 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
    * @Then I should see the item added to the cart
    */
   public function iShouldSeeTheItemAddedToTheCart() {
-
+    // Find the list of added items.
     $this->iWaitForCssElement('.menu_orders_links > li');
-//    $element = $this->getSession()->getPage()->find('css', '.menu_orders_links > li');
-//    print_r($element);
-
+//    $this->iWaitForCssElement('#lblTotalAmount');
+//    $element = $this->getSession()->getPage()->find('css', '#lblTotalAmount');
+//    print_r ($element->getHtml());
   }
 
   /**
