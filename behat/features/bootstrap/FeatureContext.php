@@ -12,7 +12,9 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
    * @Given I am an anonymous user
    */
   public function iAmAnAnonymousUser() {
-    // Just let this pass-through.
+    $this->getSession()->visit($this->locatePath('/Menu.aspx?BusinessID=3271&v=list&n=river_tel_aviv'));
+    $this->iWaitForCssElement('#onlinePanel');
+    $this->getSession()->getPage()->find('css', '#onlinePanel')->click();
   }
 
   /**
@@ -24,15 +26,6 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
 
     $element = $this->getSession()->getPage()->find('css', '#product517987 span > button');
     $element->click();
-  }
-
-  /**
-   * @When I accept notices
-   */
-  public function iAcceptNotices()
-  {
-    $this->iWaitForCssElement('#onlinePanel');
-    $this->getSession()->getPage()->find('css', '#onlinePanel')->click();
   }
 
   /**
